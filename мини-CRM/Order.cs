@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace мини_CRM
 {
-    public enum СтатусЗаказа
+    public enum OrderStatus
     {
-        Принят,
-        ВОбработке,
-        Собран,
-        Отправлен,
-        Доставлен,
-        Отменен
+        Prinyat,
+        V_obrabotke,
+        Sobran,
+        Otpravlen,
+        Dostavlen,
+        Otmenen
     }
 
     public class Order  // <-- Изменили internal на public
     {
         public int Id { get; set; }
         public int ClientId { get; set; } // ID клиента, которому принадлежит заказ
-        public DateTime ДатаРазмещения { get; set; } = DateTime.Now;
-        public string Описание { get; set; }
-        public СтатусЗаказа Статус { get; set; }
-        public decimal Сумма { get; set; }
-        public List<string> Товары { get; set; } = new List<string>();
+        public DateTime DataRazmesheniya { get; set; } = DateTime.Now;
+        public string Opisanie { get; set; }
+        public OrderStatus Status { get; set; }
+        public decimal Summa { get; set; }
+        public List<string> Tovari { get; set; } = new List<string>();
 
         public Client Client { get; set; } // Ссылка на объект Client (для удобства)
 
@@ -33,7 +33,7 @@ namespace мини_CRM
 
         public override string ToString()
         {
-            return $"Заказ #{Id} - {Описание} - {Статус}";
+            return $"Заказ #{Id} - {Opisanie} - {Status}";
         }
     }
 }

@@ -7,7 +7,7 @@ namespace мини_CRM
 {
     public class DatabaseHelper
     {
-        public static string DbFilePath { get; set; } = "crm.db"; // Имя файла базы данных - теперь свойство
+        public static string DbFilePath { get; set; } = "crm.db"; // Imya файла базы данных - теперь свойство
 
         // Метод для создания базы данных и таблиц (если они еще не существуют)
         public static void CreateDatabase()
@@ -24,16 +24,16 @@ namespace мини_CRM
                     string createClientsTableQuery = @"
                         CREATE TABLE Clients (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                            Имя TEXT,
-                            Фамилия TEXT,
-                            Отчество TEXT,
+                            Imya TEXT,
+                            Familiya TEXT,
+                            Otchestvo TEXT,
                             Email TEXT,
-                            Телефон TEXT,
-                            Адрес TEXT,
-                            Компания TEXT,
-                            Должность TEXT,
-                            ДатаРегистрации DATETIME,
-                            ДополнительнаяИнформация TEXT
+                            Telephon TEXT,
+                            Adress TEXT,
+                            Kompaniya TEXT,
+                            Dolznost TEXT,
+                            DataRegistracii DATETIME,
+                            Dop_inf TEXT
                         );";
                     SQLiteCommand createClientsTableCommand = new SQLiteCommand(createClientsTableQuery, dbConnection);
                     createClientsTableCommand.ExecuteNonQuery();
@@ -43,10 +43,10 @@ namespace мини_CRM
                         CREATE TABLE Orders (
                             Id INTEGER PRIMARY KEY AUTOINCREMENT,
                             ClientId INTEGER NOT NULL,
-                            ДатаРазмещения DATETIME,
-                            Описание TEXT,
-                            Статус INTEGER,
-                            Сумма REAL,
+                            DataRazmesheniya DATETIME,
+                            Opisanie TEXT,
+                            Status INTEGER,
+                            Summa REAL,
                             FOREIGN KEY (ClientId) REFERENCES Clients(Id)
                         );";
                     SQLiteCommand createOrdersTableCommand = new SQLiteCommand(createOrdersTableQuery, dbConnection);
@@ -65,20 +65,20 @@ namespace мини_CRM
                 dbConnection.Open();
 
                 string insertClientQuery = @"
-                    INSERT INTO Clients (Имя, Фамилия, Отчество, Email, Телефон, Адрес, Компания, Должность, ДатаРегистрации, ДополнительнаяИнформация)
-                    VALUES (@Имя, @Фамилия, @Отчество, @Email, @Телефон, @Адрес, @Компания, @Должность, @ДатаРегистрации, @ДополнительнаяИнформация);";
+                    INSERT INTO Clients (Imya, Familiya, Otchestvo, Email, Telephon, Adress, Kompaniya, Dolznost, DataRegistracii, Dop_inf)
+                    VALUES (@Imya, @Familiya, @Otchestvo, @Email, @Telephon, @Adress, @Kompaniya, @Dolznost, @DataRegistracii, @Dop_inf);";
 
                 SQLiteCommand insertClientCommand = new SQLiteCommand(insertClientQuery, dbConnection);
-                insertClientCommand.Parameters.AddWithValue("@Имя", client.Имя);
-                insertClientCommand.Parameters.AddWithValue("@Фамилия", client.Фамилия);
-                insertClientCommand.Parameters.AddWithValue("@Отчество", client.Отчество);
+                insertClientCommand.Parameters.AddWithValue("@Imya", client.Imya);
+                insertClientCommand.Parameters.AddWithValue("@Familiya", client.Familiya);
+                insertClientCommand.Parameters.AddWithValue("@Otchestvo", client.Otchestvo);
                 insertClientCommand.Parameters.AddWithValue("@Email", client.Email);
-                insertClientCommand.Parameters.AddWithValue("@Телефон", client.Телефон);
-                insertClientCommand.Parameters.AddWithValue("@Адрес", client.Адрес);
-                insertClientCommand.Parameters.AddWithValue("@Компания", client.Компания);
-                insertClientCommand.Parameters.AddWithValue("@Должность", client.Должность);
-                insertClientCommand.Parameters.AddWithValue("@ДатаРегистрации", client.ДатаРегистрации);
-                insertClientCommand.Parameters.AddWithValue("@ДополнительнаяИнформация", client.ДополнительнаяИнформация);
+                insertClientCommand.Parameters.AddWithValue("@Telephon", client.Telephon);
+                insertClientCommand.Parameters.AddWithValue("@Adress", client.Adress);
+                insertClientCommand.Parameters.AddWithValue("@Kompaniya", client.Kompaniya);
+                insertClientCommand.Parameters.AddWithValue("@Dolznost", client.Dolznost);
+                insertClientCommand.Parameters.AddWithValue("@DataRegistracii", client.DataRegistracii);
+                insertClientCommand.Parameters.AddWithValue("@Dop_inf", client.Dop_inf);
 
                 insertClientCommand.ExecuteNonQuery();
 
@@ -95,22 +95,22 @@ namespace мини_CRM
 
                 string updateClientQuery = @"
                     UPDATE Clients 
-                    SET Имя = @Имя, Фамилия = @Фамилия, Отчество = @Отчество, Email = @Email, Телефон = @Телефон, Адрес = @Адрес, 
-                        Компания = @Компания, Должность = @Должность, ДатаРегистрации = @ДатаРегистрации, ДополнительнаяИнформация = @ДополнительнаяИнформация
+                    SET Imya = @Imya, Familiya = @Familiya, Otchestvo = @Otchestvo, Email = @Email, Telephon = @Telephon, Adress = @Adress, 
+                        Kompaniya = @Kompaniya, Dolznost = @Dolznost, DataRegistracii = @DataRegistracii, Dop_inf = @Dop_inf
                     WHERE Id = @Id;";
 
                 SQLiteCommand updateClientCommand = new SQLiteCommand(updateClientQuery, dbConnection);
                 updateClientCommand.Parameters.AddWithValue("@Id", client.Id);
-                updateClientCommand.Parameters.AddWithValue("@Имя", client.Имя);
-                updateClientCommand.Parameters.AddWithValue("@Фамилия", client.Фамилия);
-                updateClientCommand.Parameters.AddWithValue("@Отчество", client.Отчество);
+                updateClientCommand.Parameters.AddWithValue("@Imya", client.Imya);
+                updateClientCommand.Parameters.AddWithValue("@Familiya", client.Familiya);
+                updateClientCommand.Parameters.AddWithValue("@Otchestvo", client.Otchestvo);
                 updateClientCommand.Parameters.AddWithValue("@Email", client.Email);
-                updateClientCommand.Parameters.AddWithValue("@Телефон", client.Телефон);
-                updateClientCommand.Parameters.AddWithValue("@Адрес", client.Адрес);
-                updateClientCommand.Parameters.AddWithValue("@Компания", client.Компания);
-                updateClientCommand.Parameters.AddWithValue("@Должность", client.Должность);
-                updateClientCommand.Parameters.AddWithValue("@ДатаРегистрации", client.ДатаРегистрации);
-                updateClientCommand.Parameters.AddWithValue("@ДополнительнаяИнформация", client.ДополнительнаяИнформация);
+                updateClientCommand.Parameters.AddWithValue("@Telephon", client.Telephon);
+                updateClientCommand.Parameters.AddWithValue("@Adress", client.Adress);
+                updateClientCommand.Parameters.AddWithValue("@Kompaniya", client.Kompaniya);
+                updateClientCommand.Parameters.AddWithValue("@Dolznost", client.Dolznost);
+                updateClientCommand.Parameters.AddWithValue("@DataRegistracii", client.DataRegistracii);
+                updateClientCommand.Parameters.AddWithValue("@Dop_inf", client.Dop_inf);
 
                 updateClientCommand.ExecuteNonQuery();
 
@@ -160,16 +160,16 @@ namespace мини_CRM
                         Client client = new Client
                         {
                             Id = Convert.ToInt32(reader["Id"]),
-                            Имя = reader["Имя"].ToString(),
-                            Фамилия = reader["Фамилия"].ToString(),
-                            Отчество = reader["Отчество"].ToString(),
+                            Imya = reader["Imya"].ToString(),
+                            Familiya = reader["Familiya"].ToString(),
+                            Otchestvo = reader["Otchestvo"].ToString(),
                             Email = reader["Email"].ToString(),
-                            Телефон = reader["Телефон"].ToString(),
-                            Адрес = reader["Адрес"].ToString(),
-                            Компания = reader["Компания"].ToString(),
-                            Должность = reader["Должность"].ToString(),
-                            ДатаРегистрации = DateTime.Parse(reader["ДатаРегистрации"].ToString()),
-                            ДополнительнаяИнформация = reader["ДополнительнаяИнформация"].ToString()
+                            Telephon = reader["Telephon"].ToString(),
+                            Adress = reader["Adress"].ToString(),
+                            Kompaniya = reader["Kompaniya"].ToString(),
+                            Dolznost = reader["Dolznost"].ToString(),
+                            DataRegistracii = DateTime.Parse(reader["DataRegistracii"].ToString()),
+                            Dop_inf = reader["Dop_inf"].ToString()
                         };
                         clients.Add(client);
                     }
@@ -189,15 +189,15 @@ namespace мини_CRM
                 dbConnection.Open();
 
                 string insertOrderQuery = @"
-                    INSERT INTO Orders (ClientId, ДатаРазмещения, Описание, Статус, Сумма)
-                    VALUES (@ClientId, @ДатаРазмещения, @Описание, @Статус, @Сумма);";
+                    INSERT INTO Orders (ClientId, DataRazmesheniya, Opisanie, Status, Summa)
+                    VALUES (@ClientId, @DataRazmesheniya, @Opisanie, @Status, @Summa);";
 
                 SQLiteCommand insertOrderCommand = new SQLiteCommand(insertOrderQuery, dbConnection);
                 insertOrderCommand.Parameters.AddWithValue("@ClientId", order.ClientId);
-                insertOrderCommand.Parameters.AddWithValue("@ДатаРазмещения", order.ДатаРазмещения);
-                insertOrderCommand.Parameters.AddWithValue("@Описание", order.Описание);
-                insertOrderCommand.Parameters.AddWithValue("@Статус", (int)order.Статус); // Сохраняем как целое число
-                insertOrderCommand.Parameters.AddWithValue("@Сумма", order.Сумма);
+                insertOrderCommand.Parameters.AddWithValue("@DataRazmesheniya", order.DataRazmesheniya);
+                insertOrderCommand.Parameters.AddWithValue("@Opisanie", order.Opisanie);
+                insertOrderCommand.Parameters.AddWithValue("@Status", (int)order.Status); // Сохраняем как целое число
+                insertOrderCommand.Parameters.AddWithValue("@Summa", order.Summa);
 
                 insertOrderCommand.ExecuteNonQuery();
 
@@ -214,17 +214,17 @@ namespace мини_CRM
 
                 string updateOrderQuery = @"
                     UPDATE Orders 
-                    SET ClientId = @ClientId, ДатаРазмещения = @ДатаРазмещения, Описание = @Описание, 
-                        Статус = @Статус, Сумма = @Сумма
+                    SET ClientId = @ClientId, DataRazmesheniya = @DataRazmesheniya, Opisanie = @Opisanie, 
+                        Status = @Status, Summa = @Summa
                     WHERE Id = @Id;";
 
                 SQLiteCommand updateOrderCommand = new SQLiteCommand(updateOrderQuery, dbConnection);
                 updateOrderCommand.Parameters.AddWithValue("@Id", order.Id);
                 updateOrderCommand.Parameters.AddWithValue("@ClientId", order.ClientId);
-                updateOrderCommand.Parameters.AddWithValue("@ДатаРазмещения", order.ДатаРазмещения);
-                updateOrderCommand.Parameters.AddWithValue("@Описание", order.Описание);
-                updateOrderCommand.Parameters.AddWithValue("@Статус", (int)order.Статус); // Сохраняем как целое число
-                updateOrderCommand.Parameters.AddWithValue("@Сумма", order.Сумма);
+                updateOrderCommand.Parameters.AddWithValue("@DataRazmesheniya", order.DataRazmesheniya);
+                updateOrderCommand.Parameters.AddWithValue("@Opisanie", order.Opisanie);
+                updateOrderCommand.Parameters.AddWithValue("@Status", (int)order.Status); // Сохраняем как целое число
+                updateOrderCommand.Parameters.AddWithValue("@Summa", order.Summa);
 
                 updateOrderCommand.ExecuteNonQuery();
 
@@ -268,10 +268,10 @@ namespace мини_CRM
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             ClientId = Convert.ToInt32(reader["ClientId"]),
-                            ДатаРазмещения = DateTime.Parse(reader["ДатаРазмещения"].ToString()),
-                            Описание = reader["Описание"].ToString(),
-                            Статус = (СтатусЗаказа)Convert.ToInt32(reader["Статус"]), // Преобразуем из int в enum
-                            Сумма = Convert.ToDecimal(reader["Сумма"])
+                            DataRazmesheniya = DateTime.Parse(reader["DataRazmesheniya"].ToString()),
+                            Opisanie = reader["Opisanie"].ToString(),
+                            Status = (OrderStatus)Convert.ToInt32(reader["Status"]), // Преобразуем из int в enum
+                            Summa = Convert.ToDecimal(reader["Summa"])
                         };
                         orders.Add(order);
                     }
@@ -304,10 +304,10 @@ namespace мини_CRM
                         {
                             Id = Convert.ToInt32(reader["Id"]),
                             ClientId = Convert.ToInt32(reader["ClientId"]),
-                            ДатаРазмещения = DateTime.Parse(reader["ДатаРазмещения"].ToString()),
-                            Описание = reader["Описание"].ToString(),
-                            Статус = (СтатусЗаказа)Convert.ToInt32(reader["Статус"]), // Преобразуем из int в enum
-                            Сумма = Convert.ToDecimal(reader["Сумма"])
+                            DataRazmesheniya = DateTime.Parse(reader["DataRazmesheniya"].ToString()),
+                            Opisanie = reader["Opisanie"].ToString(),
+                            Status = (OrderStatus)Convert.ToInt32(reader["Status"]), // Преобразуем из int в enum
+                            Summa = Convert.ToDecimal(reader["Summa"])
                         };
                         orders.Add(order);
                     }

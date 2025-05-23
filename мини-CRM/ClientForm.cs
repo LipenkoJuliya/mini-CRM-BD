@@ -19,28 +19,28 @@ namespace мини_CRM
             Client = client;
 
             // Заполняем поля формы данными из объекта client
-            nameTextBox.Text = client.Имя;
-            lastNameTextBox.Text = client.Фамилия;
-            middleNameTextBox.Text = client.Отчество; // <-- Убедитесь, что это есть
+            nameTextBox.Text = client.Imya;
+            lastNameTextBox.Text = client.Familiya;
+            middleNameTextBox.Text = client.Otchestvo; // <-- Убедитесь, что это есть
             emailTextBox.Text = client.Email;
-            phoneTextBox.Text = client.Телефон;
-            addressTextBox.Text = client.Адрес;
-            companyTextBox.Text = client.Компания;
-            positionTextBox.Text = client.Должность;
-            additionalInfoTextBox.Text = client.ДополнительнаяИнформация;
+            phoneTextBox.Text = client.Telephon;
+            addressTextBox.Text = client.Adress;
+            companyTextBox.Text = client.Kompaniya;
+            positionTextBox.Text = client.Dolznost;
+            additionalInfoTextBox.Text = client.Dop_inf;
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Client.Имя = nameTextBox.Text;
-            Client.Фамилия = lastNameTextBox.Text;
-            Client.Отчество = middleNameTextBox.Text; // <-- Убедитесь, что это есть
+            Client.Imya = nameTextBox.Text;
+            Client.Familiya = lastNameTextBox.Text;
+            Client.Otchestvo = middleNameTextBox.Text; // <-- Убедитесь, что это есть
             Client.Email = emailTextBox.Text;
-            Client.Телефон = phoneTextBox.Text;
-            Client.Адрес = addressTextBox.Text;
-            Client.Компания = companyTextBox.Text;
-            Client.Должность = positionTextBox.Text;
-            Client.ДополнительнаяИнформация = additionalInfoTextBox.Text;
+            Client.Telephon = phoneTextBox.Text;
+            Client.Adress = addressTextBox.Text;
+            Client.Kompaniya = companyTextBox.Text;
+            Client.Dolznost = positionTextBox.Text;
+            Client.Dop_inf = additionalInfoTextBox.Text;
 
             DialogResult = DialogResult.OK;
             Close();

@@ -42,23 +42,23 @@ namespace мини_CRM
 
         private void DisplayClientDetails(Client client)
         {
-            clientDetailsTextBox.Text = $"Имя: {client.Имя}\r\n" +
-                                        $"Фамилия: {client.Фамилия}\r\n" +
-                                        $"Отчество: {client.Отчество}\r\n" +
+            clientDetailsTextBox.Text = $"Imya: {client.Imya}\r\n" +
+                                        $"Familiya: {client.Familiya}\r\n" +
+                                        $"Otchestvo: {client.Otchestvo}\r\n" +
                                         $"Email: {client.Email}\r\n" +
-                                        $"Телефон: {client.Телефон}\r\n" +
-                                        $"Компания: {client.Компания}\r\n" +
-                                        $"Должность: {client.Должность}\r\n" +
-                                        $"Дата регистрации: {client.ДатаРегистрации.ToShortDateString()}\r\n" +
-                                        $"Дополнительная информация: {client.ДополнительнаяИнформация}";
+                                        $"Telephon: {client.Telephon}\r\n" +
+                                        $"Kompaniya: {client.Kompaniya}\r\n" +
+                                        $"Dolznost: {client.Dolznost}\r\n" +
+                                        $"Дата регистрации: {client.DataRegistracii.ToShortDateString()}\r\n" +
+                                        $"Дополнительная информация: {client.Dop_inf}";
         }
 
         private void searchTextBox_TextChanged(object sender, EventArgs e)
         {
             string searchText = searchTextBox.Text.ToLower();
             List<Client> filteredClients = clients.Where(c =>
-                c.Имя.ToLower().Contains(searchText) ||
-                c.Фамилия.ToLower().Contains(searchText) ||
+                c.Imya.ToLower().Contains(searchText) ||
+                c.Familiya.ToLower().Contains(searchText) ||
                 c.Email.ToLower().Contains(searchText))
                 .ToList();
 
@@ -117,11 +117,11 @@ namespace мини_CRM
             if (clientOrdersListBox.SelectedItem is Order selectedOrder)
             {
                 // Отображаем форму для изменения статуса
-                StatusChangeForm statusChangeForm = new StatusChangeForm(selectedOrder.Статус);
+                StatusChangeForm statusChangeForm = new StatusChangeForm(selectedOrder.Status);
                 if (statusChangeForm.ShowDialog() == DialogResult.OK)
                 {
                     // Получаем новый статус
-                    selectedOrder.Статус = statusChangeForm.SelectedStatus;
+                    selectedOrder.Status = statusChangeForm.SelectedStatus;
 
                     // Обновляем статус заказа в базе данных
                     DatabaseHelper.UpdateOrder(selectedOrder);
@@ -142,9 +142,9 @@ namespace мини_CRM
             {
                 // Отображаем информацию о заказе (пример)
                 clientDetailsTextBox.Text = $"Заказ №{selectedOrder.Id}\r\n" +
-                                            $"Описание: {selectedOrder.Описание}\r\n" +
-                                            $"Сумма: {selectedOrder.Сумма}\r\n" +
-                                            $"Статус: {selectedOrder.Статус}";
+                                            $"Opisanie: {selectedOrder.Opisanie}\r\n" +
+                                            $"Summa: {selectedOrder.Summa}\r\n" +
+                                            $"Status: {selectedOrder.Status}";
             }
         }
 
@@ -188,7 +188,7 @@ namespace мини_CRM
         {
             if (clientListBox.SelectedItem is Client selectedClient)
             {
-                if (MessageBox.Show($"Удалить клиента {selectedClient.Имя} {selectedClient.Фамилия}?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"Удалить клиента {selectedClient.Imya} {selectedClient.Familiya}?", "Подтверждение", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // Удаляем заказы клиента из базы данных
                     // (Удаление заказов будет происходить при удалении клиента, сделано в DatabaseHelper)

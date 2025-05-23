@@ -17,7 +17,7 @@ namespace мини_CRM
             // Инициализируем ComboBox статусов
             statusComboBox.Items.Add("В обработке");
             statusComboBox.Items.Add("Выполнен");
-            statusComboBox.Items.Add("Отменен");
+            statusComboBox.Items.Add("Otmenen");
             statusComboBox.SelectedIndex = 0;// Выбираем "В обработке" по умолчанию
 
             Order = new Order();    // Инициализируем объект Order
@@ -28,10 +28,10 @@ namespace мини_CRM
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            Order.Описание = descriptionTextBox.Text;
+            Order.Opisanie = descriptionTextBox.Text;
             if (decimal.TryParse(amountTextBox.Text, out decimal сумма))
             {
-                Order.Сумма = сумма;
+                Order.Summa = сумма;
             }
             else
             {
@@ -39,8 +39,8 @@ namespace мини_CRM
                 return;
             }
 
-            // Явно преобразуем индекс в значение перечисления СтатусЗаказа
-            Order.Статус = (СтатусЗаказа)statusComboBox.SelectedIndex; // Изменено
+            // Явно преобразуем индекс в значение перечисления OrderStatus
+            Order.Status = (OrderStatus)statusComboBox.SelectedIndex; // Изменено
 
             Order.ClientId = ClientId;
 

@@ -57,7 +57,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Имя";
+            this.label1.Text = "Imya";
             // 
             // label2
             // 
@@ -66,7 +66,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Фамилия";
+            this.label2.Text = "Familiya";
             // 
             // label3
             // 
@@ -75,7 +75,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Отчество";
+            this.label3.Text = "Otchestvo";
             // 
             // label4
             // 
@@ -93,7 +93,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Телефон";
+            this.label5.Text = "Telephon";
             // 
             // label6
             // 
@@ -102,7 +102,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(38, 13);
             this.label6.TabIndex = 5;
-            this.label6.Text = "Адрес";
+            this.label6.Text = "Adress";
             // 
             // label7
             // 
@@ -111,7 +111,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Компания";
+            this.label7.Text = "Kompaniya";
             // 
             // label8
             // 
@@ -120,7 +120,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Должность";
+            this.label8.Text = "Dolznost";
             // 
             // label9
             // 

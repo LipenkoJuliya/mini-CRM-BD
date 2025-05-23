@@ -59,7 +59,7 @@
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(60, 13);
             this.descriptionLabel.TabIndex = 2;
-            this.descriptionLabel.Text = "Описание :";
+            this.descriptionLabel.Text = "Description :";
             // 
             // amountLabel
             // 
@@ -68,7 +68,7 @@
             this.amountLabel.Name = "amountLabel";
             this.amountLabel.Size = new System.Drawing.Size(44, 13);
             this.amountLabel.TabIndex = 3;
-            this.amountLabel.Text = "Сумма :";
+            this.amountLabel.Text = "Amount :";
             // 
             // statusLabel
             // 
@@ -77,7 +77,7 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(47, 13);
             this.statusLabel.TabIndex = 4;
-            this.statusLabel.Text = "Статус :";
+            this.statusLabel.Text = "Status :";
             // 
             // statusComboBox
             // 

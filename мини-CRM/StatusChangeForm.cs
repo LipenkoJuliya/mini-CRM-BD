@@ -5,14 +5,14 @@ namespace мини_CRM
 {
     public partial class StatusChangeForm : Form
     {
-        public СтатусЗаказа SelectedStatus { get; private set; }
+        public OrderStatus SelectedStatus { get; private set; }
 
-        public StatusChangeForm(СтатусЗаказа currentStatus)
+        public StatusChangeForm(OrderStatus currentStatus)
         {
             InitializeComponent();
 
-            // Заполняем ComboBox значениями из перечисления СтатусЗаказа
-            statusComboBox.DataSource = Enum.GetValues(typeof(СтатусЗаказа));
+            // Заполняем ComboBox значениями из перечисления OrderStatus
+            statusComboBox.DataSource = Enum.GetValues(typeof(OrderStatus));
 
             // Устанавливаем выбранный статус
             statusComboBox.SelectedItem = currentStatus;
@@ -21,7 +21,7 @@ namespace мини_CRM
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            SelectedStatus = (СтатусЗаказа)statusComboBox.SelectedItem;
+            SelectedStatus = (OrderStatus)statusComboBox.SelectedItem;
             DialogResult = DialogResult.OK;
             Close();
         }
