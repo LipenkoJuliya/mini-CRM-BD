@@ -25,7 +25,7 @@ namespace мини_CRM
 
         public override string ToString()
         {
-            return $"{Familiya} {Imya} {Otchestvo}"; // Как будет отображаться клиент в ListBox
+            return $"{Familiya} {Imya} {Otchestvo}"; // Как будет отображаться клиент в ListBox.
         }
     }
 }
